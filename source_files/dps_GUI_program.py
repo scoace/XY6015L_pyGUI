@@ -7,9 +7,25 @@ import time
 import csv
 import datetime
 
-from dps_modbus import Serial_modbus
-from dps_modbus import Dps5005
-from dps_modbus import Import_limits
+DPSX6020L = 0x6015  # DPS X6020L model identifier
+
+if DPSX6020L:
+    
+	from dps_modbus_tcp import Serial_modbus
+	from dps_modbus_tcp import Dps5005
+	from dps_modbus_tcp import Import_limits
+
+	DPS_HOST = "192.168.11.53"
+	DPS_PORT = 502
+	DPS_UNIT_ID = 1
+
+	ser = Serial_modbus(f"{DPS_HOST}:{DPS_PORT}", DPS_UNIT_ID, 0, 3)
+
+
+else:
+	from dps_modbus import Serial_modbus
+	from dps_modbus import Dps5005
+	from dps_modbus import Import_limits
 
 from PyQt5.QtCore import pyqtSlot, pyqtSignal, QRunnable, QThreadPool, QTimer, QThread, QCoreApplication, QObject, QMutex, Qt
 from PyQt5.QtWidgets import QApplication, QMainWindow, QSlider, QAction, QFileDialog, QGraphicsView
