@@ -1,7 +1,7 @@
 # XY6015L_pyGUI
 A python GUI to display &amp; control XY6015L power supply
 
-* Hardware: XY6015L
+* Hardware: XY6015L XY6020L
 
 ## Program:
 What can it do:
